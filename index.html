@@ -1,1 +1,95 @@
-Hello World!
+
+<!doctype html>
+<html>
+<head>
+    <title>Learning CSS</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style type="text/css">
+
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        #Box {
+            background-color: red;
+            width:100px;
+            height:100px;
+            display:none;
+            position:relative;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body> 
+    <h1>WELCOME! Lets test your reaction speed</h1>
+    <p>Click on the shape you see as quickly as you can!</p>
+    <p class="bold">Your time: <span id="time">0</span>s</p>
+    <div id="Box"></div>
+
+    <script type="text/javascript">
+
+        function getRandomColor() {
+            //splits it into an array
+            var letters = '0123456789ABCDEF'.split('');
+            //string that starts with a #
+            var color = "#";
+            for(var i = 0; i<6; i++){
+                //add to the color string a random letter/number
+                color += letters[Math.round(Math.random()*15)];
+            }
+            return color;
+        }
+        var clickedTime;
+        var createdTime;
+        var reactionTime;
+
+       function appearBox(){
+            var time; 
+            time = Math.random() * 5000;
+            //randomly make box appear within 5 seconds
+            setTimeout(function(){
+                //Math.random finds number between 0-1, so 0.5 is half the time
+                //change box to circle sometimes
+                if (Math.random() > 0.5){
+                    document.getElementById("Box").style.borderRadius="100px";
+                }else{
+                    document.getElementById("Box").style.borderRadius="0px";
+                }
+                var top = Math.random();
+                top = top * 200; //between 0 - 300px
+                var left = Math.random();
+                left = left * 300; //between 0 - 500px
+
+                //change position of Box
+                document.getElementById("Box").style.top=top+"px";
+                document.getElementById("Box").style.left=left+"px";
+                
+                //changes colour of box
+                document.getElementById("Box").style.backgroundColor=getRandomColor();
+                document.getElementById("Box").style.display = "block" ;
+                createdTime = Date.now();
+            }, time) 
+       }
+
+        document.getElementById("Box").onclick=function(){
+            clickedTime=Date.now();
+            //find time in seconds not milliseconds
+            reactionTime = (clickedTime-createdTime)/1000; 
+            document.getElementById("time").innerHTML=reactionTime;
+            //can also use - this.style.display="none"
+            document.getElementById("Box").style.display = "none";
+            appearBox();
+        }
+        //first creates the box to be clicked    
+        appearBox();
+    </script>
+</body>    
+</html>
