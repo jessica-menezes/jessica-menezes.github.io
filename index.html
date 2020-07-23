@@ -1,95 +1,101 @@
-
-<!doctype html>
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<head>
-    <title>Reaction Test</title>
+	<head>
+		<title>Jessica Menezes</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
-    <meta charset="utf-8" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
 
-    <style type="text/css">
+				<!-- Intro -->
+					<div id="intro">
+						<h1>Hey! Welcome<br />
+						The name's Jess.</h1>
+						<p>Here you can see the projects I've been up to</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
 
-        body {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Jessica Menezes</a>
+					</header>
 
-        #Box {
-            background-color: red;
-            width:100px;
-            height:100px;
-            display:none;
-            position:relative;
-        }
-        
-        .bold {
-            font-weight: bold;
-        }
-    </style>
-</head>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="index.html">About</a></li>
+							<li><a href="about.html">Projects</a></li>
+						</ul>
+						<ul class="icons">
+                            <li><a href="https://twitter.com/_jscuh" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="https://www.linkedin.com/in/jessicamenezes-98/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                            <li><a href="https://github.com/jessica-menezes" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
 
-<body> 
-    <h1>WELCOME! Lets test your reaction speed</h1>
-    <p>Click on the shape you see as quickly as you can!</p>
-    <p class="bold">Your time: <span id="time">0</span>s</p>
-    <div id="Box"></div>
+				<!-- Main -->
+					<div id="main">
 
-    <script type="text/javascript">
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<h2><a href="#">Who am i?</a></h2>
+									<p>Recent First Class Electronic and Communications Engineer</p>
+								</header>
+								<a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
+								<ul class="actions special">
+									<li><a href="#" class="button large">Full Story</a></li>
+								</ul>
+							</article>
 
-        function getRandomColor() {
-            //splits it into an array
-            var letters = '0123456789ABCDEF'.split('');
-            //string that starts with a #
-            var color = "#";
-            for(var i = 0; i<6; i++){
-                //add to the color string a random letter/number
-                color += letters[Math.round(Math.random()*15)];
-            }
-            return color;
-        }
-        var clickedTime;
-        var createdTime;
-        var reactionTime;
+				    <!-- Footer -->
+                        <footer id="footer">
+                            <section class="split contact">
+                                <h2>Contact</h2>
+                                <h3>Get in touch</h3>
+                                <section>
+                                    <h3>Email</h3>
+                                    <p><a href="#">jessica.daniela.menezes@gmail.com</a></p>
+                                </section>
+                                <section>
+                                    <h3>Social</h3>
+                                    <ul class="icons alt">
+                                        <li><a href="https://twitter.com/_jscuh" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+                                        <li><a href="https://www.linkedin.com/in/jessicamenezes-98/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                                        <li><a href="https://github.com/jessica-menezes" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                                    </ul>
+                                </section>
+                            </section>
+                        </footer>
+                    </div>
 
-       function appearBox(){
-            var time; 
-            time = Math.random() * 5000;
-            //randomly make box appear within 5 seconds
-            setTimeout(function(){
-                //Math.random finds number between 0-1, so 0.5 is half the time
-                //change box to circle sometimes
-                if (Math.random() > 0.5){
-                    document.getElementById("Box").style.borderRadius="100px";
-                }else{
-                    document.getElementById("Box").style.borderRadius="0px";
-                }
-                var top = Math.random();
-                top = top * 200; //between 0 - 300px
-                var left = Math.random();
-                left = left * 300; //between 0 - 500px
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
 
-                //change position of Box
-                document.getElementById("Box").style.top=top+"px";
-                document.getElementById("Box").style.left=left+"px";
-                
-                //changes colour of box
-                document.getElementById("Box").style.backgroundColor=getRandomColor();
-                document.getElementById("Box").style.display = "block" ;
-                createdTime = Date.now();
-            }, time) 
-       }
+			</div>
 
-        document.getElementById("Box").onclick=function(){
-            clickedTime=Date.now();
-            //find time in seconds not milliseconds
-            reactionTime = (clickedTime-createdTime)/1000; 
-            document.getElementById("time").innerHTML=reactionTime;
-            //can also use - this.style.display="none"
-            document.getElementById("Box").style.display = "none";
-            appearBox();
-        }
-        //first creates the box to be clicked    
-        appearBox();
-    </script>
-</body>    
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
